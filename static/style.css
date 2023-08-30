@@ -1,0 +1,130 @@
+body {
+    font-family: Arial, sans-serif;
+    padding: 20px;
+    text-align: center;
+    font-size: 18px;
+}
+
+.container {
+    max-width: 800px;
+    margin: 0 auto;
+}
+
+.lyrics-container {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 20px;
+}
+
+.lyrics {
+    width: 48%; /* Splitting the width almost in half for two containers */
+    border: 1px solid #ccc;
+    padding: 10px;
+}
+
+.video-container {
+    margin-top: 20px;
+}
+
+#player {
+    display: none;
+}
+
+#searchContainer {
+    width: 100%;
+    position: relative; /* This ensures the dropdown stays within this container */
+    margin-bottom: 20px; /* Optional: provides some spacing below the container */
+}
+
+#searchInput {
+    width: 100%;  /* Take up the full width of the container */
+    padding: 10px; /* Adds some space inside the input for better visual */
+    border: 1px solid #ccc; /* A light border around the input */
+    box-sizing: border-box; /* This ensures padding and border are included in the width */
+}
+
+
+#searchResults {
+    width: 100%;
+    border: 1px solid #ccc;
+    border-top: none;
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    display: none;
+}
+
+#searchResults li {
+    padding: 8px 12px;
+    cursor: pointer;
+    background-color: #fff;
+    color: #007BFF;       /* Typical blue link color */
+    cursor: pointer; 
+}
+
+#searchResults li:hover {
+    background-color: #f5f5f5;
+}
+
+.resultItem {
+    padding: 8px;
+    cursor: pointer;
+}
+
+.resultItem:hover {
+    background-color: #f5f5f5;
+}
+.suggestion-button{
+    width: 100%;
+}
+
+#lyrics-container{
+    display: flex;
+    flex-direction: column;
+}
+
+
+.line-container {
+    display: flex;
+    align-items: center;
+    margin-bottom: 3px;  /* reduced vertical spacing */
+    border-bottom: 1px solid #e0e0e0;  /* horizontal border between lines */
+}
+
+.lyric-checkbox, .nonlyric-checkbox {
+    width: 20px;
+    height: 20px;
+    border-right: 1px solid #e0e0e0;  /* border between checkbox and lyrics */
+}
+
+.lyric-label {
+    margin-left: 10px;
+    flex: 1;
+    border-right: 1px solid #e0e0e0;  /* border between original and translated lyrics */
+    padding-right: 10px;
+}
+
+.original, .translated {
+    width: 50%;  /* set to desired width */
+    text-align: left;
+}
+
+.translated {
+    border-right: none;  /* remove border for the last element to avoid double border */
+}
+
+#exportBtn{
+    display: none;
+}
+
+.center-btn{
+    align-self: center;
+    padding: 10px;
+}
+.export-container {
+    margin-top: 10px;
+    display: flex;
+    justify-content: center;  /* Aligns items horizontally in the center */
+    align-items: center;      /* Aligns items vertically in the center */
+    height: 100%;             /* Or any specific height you want */
+}
