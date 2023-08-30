@@ -51,7 +51,7 @@ function displayLyrics(data) {
       originalLabel = $('<label>').addClass('lyric-label original').attr('for', `checkbox-${i}`).text(originalLines[i]);
       const translatedLabel = $('<label>').addClass('lyric-label translated').attr('for', `checkbox-${i}`).text(trans);
 
-      if(originalLines[i].trim() === "" || trans.trim() == "") {checkbox = $('<span>').addClass('nonlyric-checkbox')}
+      if(originalLines[i].trim() === "" && trans.trim() == "") {checkbox = $('<span>').addClass('nonlyric-checkbox')}
       lineContainer.append(checkbox);
       lineContainer.append(originalLabel);
       lineContainer.append(translatedLabel);
