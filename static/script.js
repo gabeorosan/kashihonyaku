@@ -35,8 +35,12 @@ function displayLyrics(data) {
     var originalLabel = $('<label>').addClass('lyric-label original').attr('for', `selectAll`).text('select all');
     lineContainer.append(checkbox);
     lineContainer.append(originalLabel);
+    var exportContainer = $('<div>').attr('id', `exportContainer`).addClass('nonlyric-label')
+    var exportBtn = $('<button>').attr('id', `exportBtn`).text('Export');
+    exportContainer.append(exportBtn);
+    exportBtn.on('click', exportCsv);
+    lineContainer.append(exportContainer);
     container.append(lineContainer);
-    document.getElementById('exportBtn').style.display = 'block';
     document.getElementById("selectAll").addEventListener("change", function() {
       var checkboxes = document.querySelectorAll(".lyric-checkbox");
       checkboxes.forEach(function(checkbox) {
@@ -60,16 +64,14 @@ function displayLyrics(data) {
   
   
 }
-
-
-
-document.getElementById("exportBtn").addEventListener("click", function() {
+function exportCsv() {
   // Get all checkboxes
   var checkboxes = document.querySelectorAll(".lyric-checkbox");
   var selectedLines = [];
 
   // Use a set to track unique originalText values
   var seenOriginalTexts = new Set();
+  var seenTranslatedTexts = new Set();
 
   checkboxes.forEach(function(checkbox, index) {
       if (checkbox.checked) {
@@ -78,10 +80,11 @@ document.getElementById("exportBtn").addEventListener("click", function() {
           let translatedText = lineContainer.querySelector('.translated').innerText;
 
           // Check if originalText is unique
-          if (!seenOriginalTexts.has(originalText)) {
+          if (!seenOriginalTexts.has(originalText) || !seenTranslatedTexts.has(translatedText)) {
               seenOriginalTexts.add(originalText);
+              seenTranslatedTexts.add(translatedText);
               // Format the data as CSV: "Original","Translated"
-              selectedLines.push(`"${originalText}";"${translatedText}"`);
+              selectedLines.push(`"${originalText}","${translatedText}"`);
           }
       }
   });
@@ -96,7 +99,7 @@ document.getElementById("exportBtn").addEventListener("click", function() {
   link.setAttribute("download", "anki_import.csv");
   document.body.appendChild(link);
   link.click();
-});
+}
 
 
 

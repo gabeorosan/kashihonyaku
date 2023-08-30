@@ -97,7 +97,7 @@ body {
     border-right: 1px solid #e0e0e0;  /* border between checkbox and lyrics */
 }
 
-.lyric-label {
+.lyric-label, .nonlyric-label {
     margin-left: 10px;
     flex: 1;
     border-right: 1px solid #e0e0e0;  /* border between original and translated lyrics */
@@ -114,17 +114,14 @@ body {
 }
 
 #exportBtn{
-    display: none;
+    padding: 5px;
 }
 
 .center-btn{
     align-self: center;
     padding: 10px;
 }
-.export-container {
-    margin-top: 10px;
+#exportContainer {  
     display: flex;
-    justify-content: center;  /* Aligns items horizontally in the center */
-    align-items: center;      /* Aligns items vertically in the center */
-    height: 100%;             /* Or any specific height you want */
+
 }
