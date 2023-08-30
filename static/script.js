@@ -68,14 +68,21 @@ document.getElementById("exportBtn").addEventListener("click", function() {
   var checkboxes = document.querySelectorAll(".lyric-checkbox");
   var selectedLines = [];
 
+  // Use a set to track unique originalText values
+  var seenOriginalTexts = new Set();
+
   checkboxes.forEach(function(checkbox, index) {
       if (checkbox.checked) {
           let lineContainer = checkbox.closest('.line-container');
           let originalText = lineContainer.querySelector('.original').innerText;
           let translatedText = lineContainer.querySelector('.translated').innerText;
 
-          // Format the data as CSV: "Original","Translated"
-          selectedLines.push(`"${originalText}","${translatedText}"`);
+          // Check if originalText is unique
+          if (!seenOriginalTexts.has(originalText)) {
+              seenOriginalTexts.add(originalText);
+              // Format the data as CSV: "Original","Translated"
+              selectedLines.push(`"${originalText}";"${translatedText}"`);
+          }
       }
   });
 
@@ -90,6 +97,7 @@ document.getElementById("exportBtn").addEventListener("click", function() {
   document.body.appendChild(link);
   link.click();
 });
+
 
 
 
