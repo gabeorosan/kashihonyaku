@@ -14,6 +14,10 @@ from lyricstranslate import LyricsTranslate
 from lyricstranslate.node_error import NodeError
 import re
 
+import os
+
+
+
 def get_autocomplete_results(query):
     url = f"https://lyricstranslate.com/en/ajax/lyricstranslategoogleautocomplete/autocomplete?query={query}"
     headers = {
@@ -149,8 +153,8 @@ def search_lyrics():
     return jsonify(results=results)
 
 if __name__ == '__main__':
-    app.run(debug=True)
-
+    port = int(os.environ.get('PORT', 5000))
+    app.run(host='0.0.0.0', port=port)
 '''
 
 def get_autocomplete_results(query):
